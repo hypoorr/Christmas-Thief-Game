@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FieldOfView : MonoBehaviour
 {
@@ -20,28 +21,48 @@ public class FieldOfView : MonoBehaviour
 
     private Rigidbody rb;
 
+    private bool isCaught;
+
+    [SerializeField] private UnityEvent OnPlayerCatch;
+
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();   
+        rb = GetComponent<Rigidbody>();
         playerRef = GameObject.FindGameObjectWithTag("Player");
-        
+
         StartCoroutine(FOVRoutine());
+
+
+
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject == playerRef)
+        {
+            if (!isCaught)
+            {
+                isCaught = true;
+                Debug.Log("Player caught!");
+                OnPlayerCatch.Invoke();
+            }
+
+        }
     }
 
     private void FixedUpdate()
     {
         if (canSeePlayer)
         {
-            
+
             Vector3 dir = playerRef.transform.position - transform.position;
-            dir.y = 0; 
+            dir.y = 0;
             dir.Normalize();
 
-            
+
             Quaternion targetRot = Quaternion.LookRotation(dir);
             rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRot, turnSpeed * Time.fixedDeltaTime));
 
-           
+
             Vector3 move = dir * moveSpeed * Time.fixedDeltaTime;
             rb.MovePosition(rb.position + move);
         }
