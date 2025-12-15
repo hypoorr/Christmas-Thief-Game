@@ -2,9 +2,11 @@ using UnityEngine;
 using TMPro;
 public class ItemBag : MonoBehaviour
 {
-    private int itemLimit = 8;
+    private int itemLimit = 4;
     private int currentCount = 0;
+    private int totalValue;
     [SerializeField] private TextMeshProUGUI ItemCountText;
+    [SerializeField] private TextMeshProUGUI TotalValueText;
 
     public int ItemLimit{
         get {
@@ -18,13 +20,17 @@ public class ItemBag : MonoBehaviour
         }
     }
 
-    public void NewItem()
+    public void NewItem(int cost)
     {
         currentCount += 1;
+        totalValue += cost;
+
     }
 
     void Update()
     {
         ItemCountText.text = currentCount.ToString() + "/" + itemLimit.ToString();
+        TotalValueText.text = "£" + totalValue.ToString();
+
     }
 }

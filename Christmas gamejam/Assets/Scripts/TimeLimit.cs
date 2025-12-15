@@ -5,6 +5,7 @@ public class TimeLimit : MonoBehaviour
 {
     private int timeStart = 20;
     private int currentTime;
+    [SerializeField] private FieldOfView AIVision;
     public void BeginTimer()
     {
         currentTime = timeStart;
@@ -21,6 +22,10 @@ public class TimeLimit : MonoBehaviour
                 currentTime--;
                 Debug.Log(currentTime);
             }        
+        }
+        if (currentTime == 0)
+        {
+            AIVision.OnPlayerCatch.Invoke();
         }
 
         

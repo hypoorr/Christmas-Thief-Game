@@ -23,7 +23,7 @@ public class FieldOfView : MonoBehaviour
 
     private bool isCaught;
 
-    [SerializeField] private UnityEvent OnPlayerCatch;
+    public UnityEvent OnPlayerCatch;
 
     private void Start()
     {
