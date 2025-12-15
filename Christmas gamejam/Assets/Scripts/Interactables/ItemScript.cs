@@ -13,7 +13,7 @@ public class ItemScript : Interactable
         
         if (!(ItemBag.CurrentCount >= ItemBag.ItemLimit))
         {
-            Debug.Log("Item is worth £" + Random.Range(10, 500));
+            Debug.Log("Item is worth £" + itemValue);
             ItemBag.NewItem();
             Destroy(gameObject);            
         }
