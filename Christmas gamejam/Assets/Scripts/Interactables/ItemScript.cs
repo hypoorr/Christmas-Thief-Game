@@ -4,6 +4,8 @@ public class ItemScript : Interactable
 {
     [SerializeField] private ItemLocationsSO ItemSpawns;
     [SerializeField] private ItemBag ItemBag;
+    [SerializeField] private UpgradeSystem UpgradeSystem;
+    private int itemValue;
 
     protected override void Interact()
     {
@@ -24,5 +26,6 @@ public class ItemScript : Interactable
     void Start()
     {
         transform.position = ItemSpawns.Locations[Random.Range(0, 5)];
+        itemValue = Random.Range(10,500) * UpgradeSystem.valueUpgradeLevel;
     }
 }
