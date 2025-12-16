@@ -18,6 +18,18 @@ public class ItemBag : MonoBehaviour
         get {
             return currentCount;
         }
+        set{
+            currentCount = value;
+        }
+    }
+
+    public int TotalValue{
+        get{
+            return totalValue;
+        }
+        set{
+            TotalValue = value;
+        }
     }
 
     public void NewItem(int cost)
