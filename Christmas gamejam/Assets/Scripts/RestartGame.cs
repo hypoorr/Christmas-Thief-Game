@@ -7,8 +7,9 @@ public class RestartGame : MonoBehaviour
     [SerializeField] private GameObject playerObject;
     [SerializeField] private GameObject enemyObject;
     [SerializeField] private GameObject enemyObject2;
-
-
+    [SerializeField] private GameObject enemyObject3;
+    [SerializeField] private ItemSpawnManager itemSpawnManager;
+    [SerializeField] private GameObject[] items; //items array
     public void Reset()
     {
         //reset item bag
@@ -24,9 +25,18 @@ public class RestartGame : MonoBehaviour
         //reset enemies position
         enemyObject.transform.position = new Vector3(1.48f, 1.36f, -19.11f);
         enemyObject2.transform.position = new Vector3(1.48f, 6.92f, -19.11f);
+        enemyObject3.transform.position = new Vector3(-11.47f, 1.36f, -19.11f);
+
+        //reset gifts  
+        itemSpawnManager.ResetSpawnLocations();
+        foreach (GameObject item in items)
+        {
+            item.transform.parent.gameObject.SetActive(true);
+            item.transform.position = itemSpawnManager.GetUniqueSpawnLocation();
+        }
 
     }
-    
+
 
     // reset item bag
     // reset player position

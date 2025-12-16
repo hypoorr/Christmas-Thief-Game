@@ -5,6 +5,9 @@ public class ItemScript : Interactable
     [SerializeField] private ItemLocationsSO ItemSpawns;
     [SerializeField] private ItemBag ItemBag;
     [SerializeField] private UpgradeSystem UpgradeSystem;
+    [SerializeField] private ItemSpawnManager spawnManager;
+
+
     private int itemValue;
 
 
@@ -12,15 +15,15 @@ public class ItemScript : Interactable
     {
         GameObject parentObject = transform.parent.gameObject;
         Debug.Log(parentObject);
-        itemValue = Random.Range(10,500) * UpgradeSystem.valueUpgradeLevel;
+        itemValue = Random.Range(10, 500) * UpgradeSystem.valueUpgradeLevel;
         Debug.Log("Interacted with " + gameObject.name);
-        
+
         if (!(ItemBag.CurrentCount >= ItemBag.ItemLimit))
         {
             Debug.Log("Item is worth £" + itemValue);
             ItemBag.NewItem(itemValue);
             parentObject.SetActive(false);
-                     
+
         }
         else
         {
@@ -36,15 +39,16 @@ public class ItemScript : Interactable
         {
             GameObject parentObject = transform.parent.gameObject;
             Debug.Log(parentObject);
-            
+
         }
         else
         {
             Debug.Log("This GameObject has no parent.");
         }
-        transform.position = ItemSpawns.Locations[Random.Range(0, 6)];
+        transform.position = spawnManager.GetUniqueSpawnLocation();
+
     }
-        
-        
-    
+
+
+
 }
