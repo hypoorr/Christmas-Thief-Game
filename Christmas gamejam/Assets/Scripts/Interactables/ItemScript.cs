@@ -5,12 +5,13 @@ public class ItemScript : Interactable
     [SerializeField] private ItemLocationsSO ItemSpawns;
     [SerializeField] private ItemBag ItemBag;
     [SerializeField] private UpgradeSystem UpgradeSystem;
-    GameObject parentObject;
     private int itemValue;
 
 
     protected override void Interact()
     {
+        GameObject parentObject = transform.parent.gameObject;
+        Debug.Log(parentObject);
         itemValue = Random.Range(10,500) * UpgradeSystem.valueUpgradeLevel;
         Debug.Log("Interacted with " + gameObject.name);
         
@@ -18,7 +19,8 @@ public class ItemScript : Interactable
         {
             Debug.Log("Item is worth £" + itemValue);
             ItemBag.NewItem(itemValue);
-            parentObject.SetActive(false);         
+            parentObject.SetActive(false);
+                     
         }
         else
         {
@@ -33,8 +35,8 @@ public class ItemScript : Interactable
         if (transform.parent != null)
         {
             GameObject parentObject = transform.parent.gameObject;
-            parentObject.SetActive(false);
-            Debug.Log("Parent GameObject: " + parentObject.name);
+            Debug.Log(parentObject);
+            
         }
         else
         {

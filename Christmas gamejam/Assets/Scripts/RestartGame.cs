@@ -18,7 +18,7 @@ public class RestartGame : MonoBehaviour
         //reset player position
         CharacterController cc = playerObject.GetComponent<CharacterController>();
         cc.enabled = false;
-        playerObject.transform.position = new Vector3(-0.36f, 0.605f, 2.5f);
+        playerObject.transform.position = new Vector3(-4f, 1.2f, -13.36f);
         cc.enabled = true;
 
         //reset enemies position
