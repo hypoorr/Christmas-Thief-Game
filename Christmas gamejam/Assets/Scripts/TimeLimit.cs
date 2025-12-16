@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 public class TimeLimit : MonoBehaviour
 {
-    private int timeStart = 20;
+    private int timeStart = 20000;
     private int currentTime;
     [SerializeField] private FieldOfView AIVision;
     [SerializeField] private TextMeshProUGUI timerText;

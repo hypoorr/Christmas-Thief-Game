@@ -5,6 +5,7 @@ public class ItemScript : Interactable
     [SerializeField] private ItemLocationsSO ItemSpawns;
     [SerializeField] private ItemBag ItemBag;
     [SerializeField] private UpgradeSystem UpgradeSystem;
+    GameObject parentObject;
     private int itemValue;
 
 
@@ -17,7 +18,7 @@ public class ItemScript : Interactable
         {
             Debug.Log("Item is worth £" + itemValue);
             ItemBag.NewItem(itemValue);
-            Destroy(gameObject);            
+            parentObject.SetActive(false);         
         }
         else
         {
@@ -28,7 +29,20 @@ public class ItemScript : Interactable
 
     void Start()
     {
+        // Check if this GameObject has a parent
+        if (transform.parent != null)
+        {
+            GameObject parentObject = transform.parent.gameObject;
+            parentObject.SetActive(false);
+            Debug.Log("Parent GameObject: " + parentObject.name);
+        }
+        else
+        {
+            Debug.Log("This GameObject has no parent.");
+        }
         transform.position = ItemSpawns.Locations[Random.Range(0, 5)];
-        
     }
+        
+        
+    
 }

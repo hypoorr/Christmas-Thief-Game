@@ -28,7 +28,7 @@ public class ItemBag : MonoBehaviour
             return totalValue;
         }
         set{
-            TotalValue = value;
+            totalValue = value;
         }
     }
 

@@ -6,6 +6,7 @@ public class RestartGame : MonoBehaviour
     [SerializeField] private TimeLimit timerScript;
     [SerializeField] private GameObject playerObject;
     [SerializeField] private GameObject enemyObject;
+    [SerializeField] private GameObject enemyObject2;
 
 
     public void Reset()
@@ -20,8 +21,10 @@ public class RestartGame : MonoBehaviour
         playerObject.transform.position = new Vector3(-0.36f, 0.605f, 2.5f);
         cc.enabled = true;
 
-        //reset enemy position
-        enemyObject.transform.position = new Vector3(1.48f, 0.24f, 16.4f);
+        //reset enemies position
+        enemyObject.transform.position = new Vector3(1.48f, 1.36f, -19.11f);
+        enemyObject2.transform.position = new Vector3(1.48f, 6.92f, -19.11f);
+
     }
     
 
