@@ -42,7 +42,7 @@ public class ItemScript : Interactable
         {
             Debug.Log("This GameObject has no parent.");
         }
-        transform.position = ItemSpawns.Locations[Random.Range(0, 5)];
+        transform.position = ItemSpawns.Locations[Random.Range(0, 6)];
     }
         
         
