@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using TMPro;
 public class TimeLimit : MonoBehaviour
 {
-    private int timeStart = 20000;
+    private int timeStart = 60;
     private int currentTime;
+    private bool timerStopped = false;
     [SerializeField] private FieldOfView AIVision;
     [SerializeField] private TextMeshProUGUI timerText;
+    
     public void BeginTimer()
     {
+        timerStopped = false;
         currentTime = timeStart;
         timerText.text = currentTime.ToString() + "s";
         StartCoroutine(Timer());
@@ -19,6 +22,10 @@ public class TimeLimit : MonoBehaviour
     {
         while (currentTime > 0)
         {
+            if (timerStopped)
+            {
+                break;
+            }
             yield return new WaitForSeconds(1f);
             if (currentTime > 0)
             {
@@ -32,13 +39,18 @@ public class TimeLimit : MonoBehaviour
             AIVision.OnPlayerCatch.Invoke();
         }
 
-        
+    }
+
+    public void StopTimer()
+    {
+        timerStopped = true;
+    }
     void Update()
     {
         timerText.text = currentTime.ToString() + "s";
     }
         
         
-    }
+    
 
 }
