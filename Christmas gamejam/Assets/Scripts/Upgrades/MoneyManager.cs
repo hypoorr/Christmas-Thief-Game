@@ -3,7 +3,7 @@ using TMPro;
 public class MoneyManager : MonoBehaviour
 {
 
-    private int money = 1000000;
+    private int money = 0;
     [SerializeField] private TextMeshProUGUI moneyText;
     public int Money{
         get{

@@ -27,7 +27,7 @@ public class DoorScript : Interactable
 
         //prompt results screen + reward
         ItemsStoleText.text = "Gifts Stolen: " + (itemBag.CurrentCount).ToString();
-        MoneyMadeText.text = "Money made: $" + (itemBag.TotalValue).ToString();
+        MoneyMadeText.text = "Money made: £" + (itemBag.TotalValue).ToString();
         moneyManager.Money = itemBag.TotalValue;
         OnExit.Invoke();
         Cursor.lockState = CursorLockMode.None;
